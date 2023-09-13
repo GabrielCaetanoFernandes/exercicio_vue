@@ -75,7 +75,7 @@ function calcularOp() {
   <div class="container">
     <div class="row">
       <div class="col d-flex mt-5">
-        <form class="d-flex" @submit.prevent="calcularOp">
+        <form class="d-flex" @change="calcularOp()" @submit.prevent="calcularOp">
           <input @change="evento => estado.numeroA = evento.target.value" class="form-control m-2" type="number"
             placeholder="0" required>
           <select class="form-control m-2" @change="evento => estado.operacao = evento.target.value">
