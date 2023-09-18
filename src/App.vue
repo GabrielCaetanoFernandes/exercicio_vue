@@ -9,10 +9,6 @@ const estado = reactive({
   operacao: '',
 })
 
-const teste = () => {
-  console.log(estado.numeroA, estado.numeroB, estado.operacao)
-}
-
 const sum = () => {
   let numA = estado.numeroA;
   let numB = estado.numeroB;
@@ -72,22 +68,22 @@ function calcularOp() {
 </script>
 
 <template>
-  <div class="container">
+  <div class="container text-center">
+    <header class="d-flex align-items-center justify-content-between m-3">
+      <h1>Calculadora</h1>
+    </header>
     <div class="row">
-      <div class="col d-flex mt-5">
-        <form class="d-flex" @change="calcularOp()" @submit.prevent="calcularOp">
+      <div class="col mt-5 p-5">
+        <form class="justify-content-between align-items-center p-5" @change="calcularOp()" @submit.prevent="calcularOp">
           <input @change="evento => estado.numeroA = evento.target.value" class="form-control m-2" type="number"
             placeholder="0" required>
-          <select class="form-control m-2" @change="evento => estado.operacao = evento.target.value">
-            <option value="">Operação</option>
-            <option value="1">+</option>
-            <option value="2">-</option>
-            <option value="3">x</option>
-            <option value="4">/</option>
-          </select>
+            <button class="col btn btn-outline-dark btn-lg m-3" value="1" @click="evento => estado.operacao = evento.target.value">+</button>
+            <button class="col btn btn-outline-dark btn-lg m-3" value="2" @click="evento => estado.operacao = evento.target.value">-</button>
+            <button class="col btn btn-outline-dark btn-lg m-3" value="3" @click="evento => estado.operacao = evento.target.value">x</button>
+            <button class="col btn btn-outline-dark btn-lg m-3" value="4" @click="evento => estado.operacao = evento.target.value">/</button>
           <input @change="evento => estado.numeroB = evento.target.value" class="form-control m-2" type="number"
             placeholder="0" required>
-          <button class="btn btn-outline-primary m-2" type="submit">=</button>
+          <span>=</span>
           <input class="form-control m-2" type="number" disabled :value="estado.resultado">
         </form>
       </div>
@@ -101,6 +97,11 @@ function calcularOp() {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  
+}
+.dark{
+  background-color: rgb(20, 19, 19);
+  color: rgb(215, 202, 229)
 }
 
 </style>
